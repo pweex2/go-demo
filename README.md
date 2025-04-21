@@ -41,20 +41,6 @@ The Makefile will auto-detect your OS:
 - On macOS: builds a native binary
 - On Linux (e.g. CI or container): builds a Linux-compatible binary
 
-The result is placed in `bin/go-demo`.
-
-```bash
-make build-mac
-```
-
-can be used to build a macOS-compatible binary.
-
-```bash
-make build-linux
-```
-
-can be used to build a Linux-compatible binary.
-
 ## 🛰 Remote Deployment Placeholder
 
 While you don't yet have a live server for deployment, the project includes a placeholder `Makefile` target to simulate remote deployment:
@@ -75,7 +61,7 @@ Once a real server is available, this can be turned into an actual deployment st
 
 ## 📦 Releasing a Version
 
-This project supports automatic GitHub Releases. When you push a tag like `v1.0.0`, GitHub Actions will:
+This project supports automatic GitHub Releases. When you push a tag like `v1.0.x`, GitHub Actions will:
 
 1. Build the binary
 2. Create a GitHub Release
@@ -84,8 +70,23 @@ This project supports automatic GitHub Releases. When you push a tag like `v1.0.
 ### Example:
 
 ```bash
-git tag v1.0.0
-git push origin v1.0.0
+git tag v1.0.x
+git push origin v1.0.x
 ```
 
 This will trigger the release workflow automatically.
+
+## ✅ Linting
+
+This project uses [golangci-lint](https://golangci-lint.run/) for static code analysis and style checks.
+
+You can run linting locally:
+
+```bash
+make lint
+```
+
+Or let GitHub Actions automatically run it on every commit/pull request:
+
+- Checks naming, unused code, errors, formatting, etc.
+- Fails CI if issues are detected

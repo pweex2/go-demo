@@ -38,9 +38,13 @@ deploy-local:
 	@test -f $(BUILD_DIR)/$(BINARY_NAME) || (echo "❌ Binary not found. Run make build first."; exit 1)
 	@if [ ! -x ./deploy.sh ]; then chmod +x ./deploy.sh; fi
 	./deploy.sh
-	
+
 deploy-remote:
 	@echo "🚀 Simulating remote deployment..."
 	@echo "scp -i ~/.ssh/id_rsa bin/go-demo-linux user@remote:/usr/local/bin/go-demo"
 	@echo "ssh -i ~/.ssh/id_rsa user@remote 'pkill go-demo || true && nohup /usr/local/bin/go-demo &'"
 	@echo "rsync -avz -e 'ssh -i ~/.ssh/id_rsa' bin/go-demo-linux user@remote:/usr/local/bin/go-demo"
+
+
+lint:
+	golangci-lint run ./...
