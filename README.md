@@ -72,3 +72,20 @@ rsync -avz -e 'ssh -i ~/.ssh/id_rsa' bin/go-demo-linux user@remote:/usr/local/bi
 ```
 
 Once a real server is available, this can be turned into an actual deployment step in your CI/CD pipeline.
+
+## 📦 Releasing a Version
+
+This project supports automatic GitHub Releases. When you push a tag like `v1.0.0`, GitHub Actions will:
+
+1. Build the binary
+2. Create a GitHub Release
+3. Upload the `bin/go-demo` binary to the Release assets
+
+### Example:
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+This will trigger the release workflow automatically.

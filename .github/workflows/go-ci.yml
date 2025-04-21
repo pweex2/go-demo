@@ -3,6 +3,8 @@ name: Go CI
 on:
   push:
     branches: [ "main" ]
+    tags:
+      - 'v*'
   pull_request:
     branches: [ "main" ]
 
@@ -51,6 +53,12 @@ jobs:
         TARGET_ENV: production
       run: |
         echo "🧪 Starting simulated deployment to $TARGET_ENV..."
-        echo "==> Would normally run: scp bin/go-demo-linux user@host:/remote/path"
+        echo "==> Would normally run: scp bin/go-demo user@host:/remote/path"
         echo "==> Would then ssh user@host to restart the go-demo service"
         echo "✅ Simulated deployment complete."
+
+    - name: Upload release binary
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+        files: bin/go-demo
