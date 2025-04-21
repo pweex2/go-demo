@@ -42,3 +42,15 @@ jobs:
 
     - name: Build and push Docker image
       run: make docker-push
+
+    - name: Deploy locally
+      run: make deploy-local
+
+    - name: Simulated remote deployment (placeholder)
+      env:
+        TARGET_ENV: production
+      run: |
+        echo "🧪 Starting simulated deployment to $TARGET_ENV..."
+        echo "==> Would normally run: scp bin/go-demo-linux user@host:/remote/path"
+        echo "==> Would then ssh user@host to restart the go-demo service"
+        echo "✅ Simulated deployment complete."
