@@ -8,5 +8,7 @@ import (
 func HelloHandler(w http.ResponseWriter, r *http.Request) {
 	resp := map[string]string{"message": "Hello, GitHub Actions!"}
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(resp)
+	if err := json.NewEncoder(w).Encode(resp); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
 }
