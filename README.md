@@ -15,3 +15,15 @@ A minimal Go web service demo with GitHub Actions CI.
 go run main.go
 curl http://localhost:8080/hello
 ```
+
+## 🧪 Run Tests
+
+```bash
+go test ./...
+```
+
+## 📦 Build
+
+```bash
+go build -o bin/go-demo
+```

@@ -4,6 +4,8 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func TestHelloHandler(t *testing.T) {
@@ -13,7 +15,5 @@ func TestHelloHandler(t *testing.T) {
 	HelloHandler(w, req)
 
 	resp := w.Result()
-	if resp.StatusCode != http.StatusOK {
-		t.Fatalf("Expected status 200 OK, got %d", resp.StatusCode)
-	}
+	assert.Equal(t, http.StatusOK, resp.StatusCode)
 }
