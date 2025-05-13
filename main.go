@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/vvx2/go-demo/handler"
+	"github.com/vvx2/go-demo/internal/handler"
 )
 
 func main() {

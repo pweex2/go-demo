@@ -48,3 +48,7 @@ deploy-remote:
 
 lint:
 	golangci-lint run ./...
+
+# Makefile
+test:
+	go test ./...
